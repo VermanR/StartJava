@@ -8,17 +8,21 @@ public class CalculatorTest {
 		do {
 			Calculator calc = new Calculator();
 			Scanner scanner = new Scanner(System.in);
-			System.out.print("Enter the first number: ");
-			calc.setA(scanner.nextInt());
 
-			System.out.print("Enter the sign of the math operation: ");
-			calc.setOperation(scanner.next().charAt(0));
+			System.out.print("Enter the math expression: ");
+			String userInput = scanner.nextLine();
+			String[] arrChar = userInput.split(" ");
 
-			System.out.print("Enter the second number: ");
-			calc.setB(scanner.nextInt());
-			
+			int numberOne = Integer.parseInt(arrChar[0]);
+			String g = arrChar[1];
+			char symbol = g.charAt(0);
+			int numberTwo = Integer.parseInt(arrChar[2]);
+
+			calc.setA(numberOne);
+			calc.setOperation(symbol);
+			calc.setB(numberTwo);
 			calc.calculate();
-			answer = scanner.nextLine();
+
 			do {
 				System.out.println("Want to continue? [Yes / No]:");
 				answer = scanner.nextLine();
