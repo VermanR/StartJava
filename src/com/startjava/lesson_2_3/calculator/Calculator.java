@@ -26,24 +26,41 @@ public class Calculator {
 		this.b = b;
 	}
 	public void calculate() {
+
+
+		CalculatorTest calcTest = new CalculatorTest(); // new code
+
+		String[] mathExpression = calcTest.userArray();
+
+			int numberOne = Integer.parseInt(mathExpression[0]);
+			String g = mathExpression[1];
+			char symbol = g.charAt(0);
+			int numberTwo = Integer.parseInt(mathExpression[2]);
+
+			setA(numberOne);
+
+			setOperation(symbol);
+
+			setB(numberTwo); // new code
+
 		switch (operation) {
 			case '+':
-				System.out.println(Math.addExact(a,b));
+				System.out.println(Math.addExact(a, b));
 				break;
 			case '-':
-				System.out.println(Math.subtractExact(a,b));
+				System.out.println(Math.subtractExact(a, b));
 				break;
 			case '*':
-				System.out.println(Math.multiplyExact(a,b));
+				System.out.println(Math.multiplyExact(a, b));
 				break;
 			case '/':
-				System.out.println(Math.floorDiv(a,b));
+				System.out.println(Math.floorDiv(a, b));
 				break;
 			case '^':
-				System.out.println(Math.pow(a,b));
+				System.out.println(Math.pow(a, b));
 				break;
 			case '%':
-				System.out.println(Math.IEEEremainder(a,b));
+				System.out.println(Math.IEEEremainder(a, b));
 				break;
 		}
 	}

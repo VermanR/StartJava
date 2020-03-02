@@ -10,24 +10,22 @@ public class CalculatorTest {
 			Scanner scanner = new Scanner(System.in);
 
 			System.out.print("Enter the math expression: ");
-			String userInput = scanner.nextLine();
-			String[] arrChar = userInput.split(" ");
 
-			int numberOne = Integer.parseInt(arrChar[0]);
-			String g = arrChar[1];
-			char symbol = g.charAt(0);
-			int numberTwo = Integer.parseInt(arrChar[2]);
-
-			calc.setA(numberOne);
-			calc.setOperation(symbol);
-			calc.setB(numberTwo);
 			calc.calculate();
+			userArray();
 
 			do {
+
 				System.out.println("Want to continue? [Yes / No]:");
 				answer = scanner.nextLine();
 			} while (!answer.equals("Yes") && !answer.equals("No"));
 		} while(answer.equals("Yes"));
+	}
+
+	public static String[] userArray() {
+		Scanner scanner = new Scanner(System.in);
+		String[] mathExpression = scanner.nextLine().split(" ");
+		return mathExpression;
 	}
 }
 
