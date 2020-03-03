@@ -11,8 +11,9 @@ public class CalculatorTest {
 
 			System.out.print("Enter the math expression: ");
 
-			calc.calculate();
-			userArray();
+			String[] mathExpression = scanner.nextLine().split(" ");
+
+			calc.calculate(mathExpression);
 
 			do {
 
@@ -20,12 +21,6 @@ public class CalculatorTest {
 				answer = scanner.nextLine();
 			} while (!answer.equals("Yes") && !answer.equals("No"));
 		} while(answer.equals("Yes"));
-	}
-
-	public static String[] userArray() {
-		Scanner scanner = new Scanner(System.in);
-		String[] mathExpression = scanner.nextLine().split(" ");
-		return mathExpression;
 	}
 }
 

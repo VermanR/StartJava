@@ -25,23 +25,17 @@ public class Calculator {
 	public void setB(int b) {
 		this.b = b;
 	}
-	public void calculate() {
+	public void calculate(String[] mathExpression) {
+		int numberOne = Integer.parseInt(mathExpression[0]);
+		String g = mathExpression[1];
+		char symbol = g.charAt(0);
+		int numberTwo = Integer.parseInt(mathExpression[2]);
 
+		setA(numberOne);
 
-		CalculatorTest calcTest = new CalculatorTest(); // new code
+		setOperation(symbol);
 
-		String[] mathExpression = calcTest.userArray();
-
-			int numberOne = Integer.parseInt(mathExpression[0]);
-			String g = mathExpression[1];
-			char symbol = g.charAt(0);
-			int numberTwo = Integer.parseInt(mathExpression[2]);
-
-			setA(numberOne);
-
-			setOperation(symbol);
-
-			setB(numberTwo); // new code
+		setB(numberTwo);
 
 		switch (operation) {
 			case '+':
