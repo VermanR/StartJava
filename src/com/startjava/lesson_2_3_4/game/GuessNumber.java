@@ -1,44 +1,66 @@
 package com.startjava.lesson_2_3_4.game;
 
-import java.lang.Math;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class GuessNumber {
-	private Player player1;
-	private Player player2;
+    private Player player1;
+    private Player player2;
+    private int computerNumber;
 
-	Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
-	public GuessNumber(Player player1, Player player2) {
-		this.player1 = player1;
-		this.player2 = player2;
-	}
+    public GuessNumber(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+    }
 
-	public void guess() {
-		int computerNumber = (int) (Math.random() * 101);
-		int number;
-		do {
-			System.out.print(player1.getName() + ", enter a number: ");
-			player1.setNumber(sc.nextInt());
-			number = player1.getNumber();
-			if (number == computerNumber) {
-				System.out.println(player1.getName() + ", you guessed!");
-			} else  if (number < computerNumber) {
-				System.out.println(player1.getName() + ", you entered a number less than what the computer did");
-			} else if (number > computerNumber) {
-				System.out.println(player1.getName() + ", you entered a number greater than what the computer did");
-			}
+    public void guess() {
+        computerNumber = (int) (Math.random() * 101);
+        System.out.println("You have 10 attempts");
 
-			System.out.print(player2.getName() + ", enter a number: ");
-			player2.setNumber(sc.nextInt());
-			number = player2.getNumber();
-			if (number == computerNumber) {
-				System.out.println(player2.getName() + ", you guessed!");
-			} else  if (number < computerNumber) {
-				System.out.println(player2.getName() + ", you entered a number less than what the computer did");
-			} else if (number > computerNumber) {
-				System.out.println(player2.getName() + ", you entered a number greater than what the computer did");
-			}
-		} while (number != computerNumber);
-	}	
+        for (int i = 1; i <= 10; i++) {
+            player1.setCountAttempt(i);
+            if (!makeMove(player1)) {
+                break;
+            }
+            player2.setCountAttempt(i);
+            if (!makeMove(player2)) {
+                break;
+            }
+        }
+        System.out.println(Arrays.toString(player1.getArrNumbers()));
+        System.out.println(Arrays.toString(player2.getArrNumbers()));
+
+        player1.clearGuessNumbers();
+        player2.clearGuessNumbers();
+    }
+
+    private boolean makeMove(Player player) {
+        inputNumber(player);
+        if (!compareNumbers(player)) {
+            if (player.getCountAttempt() == 10) {
+                System.out.println("Player " + player.getName() + " has run out of attempts");
+            }
+            return true;
+        } else return false;
+    }
+
+    private void inputNumber(Player player) {
+        System.out.print(player.getName() + ", enter a number ");
+        player.putGuessNumber(sc.nextInt());
+        sc.nextLine();
+    }
+
+    private boolean compareNumbers(Player player) {
+        if (player.getArrNumberRRR() > computerNumber) {
+            System.out.println("You entered a number greater than what the computer did");
+        } else if (player.getArrNumberRRR() < computerNumber) {
+            System.out.println("You entered a number less than what the computer did");
+        } else {
+            System.out.println("Player " + player.getName() + ", guessed the number with " + player.getCountAttempt() + " attempts");
+            return true;
+        }
+        return false;
+    }
 }
