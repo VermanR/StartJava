@@ -53,9 +53,9 @@ public class GuessNumber {
     }
 
     private boolean compareNumbers(Player player) {
-        if (player.getArrNumberRRR() > computerNumber) {
+        if (player.numberArray() > computerNumber) {
             System.out.println("You entered a number greater than what the computer did");
-        } else if (player.getArrNumberRRR() < computerNumber) {
+        } else if (player.numberArray() < computerNumber) {
             System.out.println("You entered a number less than what the computer did");
         } else {
             System.out.println("Player " + player.getName() + ", guessed the number with " + player.getCountAttempt() + " attempts");

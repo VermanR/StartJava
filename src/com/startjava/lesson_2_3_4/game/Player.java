@@ -24,7 +24,7 @@ public class Player {
     }
 
 
-    public int getArrNumberRRR() {
+    public int numberArray() {
         return arrNumbers[countAttempt - 1];
     }
 
