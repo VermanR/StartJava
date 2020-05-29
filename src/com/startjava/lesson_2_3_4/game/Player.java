@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Player {
     private String name;
     private int countAttempt;
-    private int[] arrNumbers = new int[10];
+    private int[] enteredNums = new int[10];
 
     public Player(String name) {
         this.name = name;
@@ -23,22 +23,20 @@ public class Player {
         return countAttempt;
     }
 
-
-    public int numberArray() {
-        return arrNumbers[countAttempt - 1];
+    public int getCurrentNum() {
+        return enteredNums[countAttempt - 1];
     }
 
-
-    public void putGuessNumber(int guessNumber) {  //name will change
-        arrNumbers[countAttempt - 1] = guessNumber;
+    public void setEnteredNum(int guessNumber) {  //name will change
+        enteredNums[countAttempt - 1] = guessNumber;
     }
 
-    public void clearGuessNumbers() {              //name will change
-        Arrays.fill(arrNumbers, 0, countAttempt, 0);
+    public void clear() {
+        Arrays.fill(enteredNums, 0, countAttempt, 0);
         countAttempt = 0;
     }
 
-    public int[] getArrNumbers() {
-        return Arrays.copyOf(arrNumbers, countAttempt);
+    public int[] getEnteredNums() {
+        return Arrays.copyOf(enteredNums, countAttempt);
     }
 }
