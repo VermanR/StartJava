@@ -21,11 +21,11 @@ public class GuessNumber {
 
         for (int i = 1; i <= 10; i++) {
             player1.setCountAttempt(i);
-            if (!makeMove(player1)) {
+            if (makeMove(player1)) {
                 break;
             }
             player2.setCountAttempt(i);
-            if (!makeMove(player2)) {
+            if (makeMove(player2)) {
                 break;
             }
         }
@@ -37,15 +37,11 @@ public class GuessNumber {
     }
 
     private boolean makeMove(Player player) {
-
-
         inputNumber(player);
-        if (!compareNumbers(player)) {
-            if (player.getCountAttempt() == 10) {
-                System.out.println("Player " + player.getName() + " has run out of attempts");
-            }
-            return true;
-        } else return false;
+        if (player.getCountAttempt() == 10) {
+            System.out.println("Player " + player.getName() + " has run out of attempts");
+        }
+        return compareNumbers(player);
     }
 
     private void inputNumber(Player player) {
